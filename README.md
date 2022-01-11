@@ -94,5 +94,25 @@
       - Docker + Minikube
       - minikube quickly sets up a local kubernetes cluster on macOS
       
+   #COMMANDS
+           
+           % docker --version
+           % docker login
+           % docker run -d -p 80:80 docker/getting-started
+           % docker ps
+     Browser: http://localhost
+           % docker stop <container id>
+           % docker ps -a
+           % docker rm -f <container id>
       
-      
+   #INSTALLING MINIKUBE AND MINIKUBE COMMANDS
+   
+            - https://minikube.sigs.k8s.io/docs/start/
+            % brew install minikube
+            OR
+            % curl -LO               https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64
+            sudo install minikube-darwin-amd64 /usr/local/bin/minikube
+            % minikube version  
+            % minikube start //to start a cluster
+            
+    
