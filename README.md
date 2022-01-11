@@ -114,5 +114,8 @@
             sudo install minikube-darwin-amd64 /usr/local/bin/minikube
             % minikube version  
             % minikube start //to start a cluster
+            % minikube status
+            % docker ps //should list minikube container running on docker engine
+            
             
     
