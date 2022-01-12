@@ -11,7 +11,7 @@
       -MASTER NODE - all decisions are made
       -worker node - running applications etc. (Example- 1Master node - 3-Worker node)
     
-   #MasterNode 
+   **MasterNode** 
    
       - Scheduler
             - watches for new workloads/pods and assigns them to a node based on several scheduling factors
@@ -45,7 +45,7 @@
         gives load balancer.
         creates load balancer based on underlying cloud controller provider (aws or azure or google cloud)
         
-   #WORKER NODE
+   **WORKER NODE**
    
           - provides running environment for our applications
           -3 Main components (kublet, container runtime and kube proxy)
@@ -81,7 +81,7 @@
               - EC2 (for long run applictions)
           -Amazon EKS dashboard in the AWS console
   
-  #RUNNING KUBERNETES LOCALLY
+  **RUNNING KUBERNETES LOCALLY**
   
      local cluster can be created using 
         - minikube
@@ -89,12 +89,12 @@
         - docker
         Note: do not use it in any environment including production. used only for local development or CI
         
-   #MINIKUBE
+   **MINIKUBE**
    
       - Docker + Minikube
       - minikube quickly sets up a local kubernetes cluster on macOS
       
-   #COMMANDS
+   **COMMANDS**
            
            % docker --version
            % docker login
@@ -105,7 +105,7 @@
            % docker ps -a
            % docker rm -f <container id>
       
-   #INSTALLING MINIKUBE AND MINIKUBE COMMANDS
+   **INSTALLING MINIKUBE AND MINIKUBE COMMANDS**
    
             - https://minikube.sigs.k8s.io/docs/start/
             % brew install minikube
