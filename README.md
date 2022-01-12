@@ -67,7 +67,7 @@
                   -each node gets own unique IP address
                   -routing network traffic to load balanced services
  
- #RUNNING KUBERNETES
+ **RUNNING KUBERNETES**
            
            Managed Kubernetes (Master node fully managed by below services)
            - EKS - Elastic Kubernetes Service (from AWS)
@@ -118,7 +118,8 @@
             % docker ps //should list minikube container running on docker engine
             % minikube ip //ip address of master node
     
-    #KUBECTL
+   **KUBECTL**
+    
             - Kubernetes command line tool
             - runs commands against our cluster
                -deploy
@@ -128,7 +129,8 @@
                -view logs
                -etc
                
-    #INSTALLING KUBECTL
+   **INSTALLING KUBECTL**
+   
                 - https://kubernetes.io/docs/tasks/tools/#kubectl
                 - https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/
                 %    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/darwin/amd64/kubectl"
@@ -137,7 +139,8 @@
                 % sudo chown root: /usr/local/bin/kubectl //to make it root
                 % kubectl version --client //for testing
     
-    #KUBECTL- Creating POD 
+   **KUBECTL- Creating POD** 
+    
                 %  docker run --rm -p 80:80 <kubernetes image>
                 - http://localhost
                 % CTRL+C
@@ -149,7 +152,7 @@
                 % kubectl delete pod hello-world //to delete pod
                 % kubectl get pods
     
-    #Exploring cluster
+   **Exploring cluster**
                
                 % minikube status
                 % kubectl get nodes
@@ -157,7 +160,49 @@
                 % kubectl get pods -A
                 %  - kubectl run hello-world --image=abhilashgd/kubernetes:hello-world --port=80
                 % kubectl get pods
+                % kubectl get pods -A
                 
+   **SSH into NODES**
     
+                % kubectl get nodes
+                % minikube ssh --help
+                % minikube ssh //takes into minikube container
+                % cd ../..
+                % cd /
+                % pwd
+                % ls //shows linux file structure
+                % cd bin
+                % ls
+                % cd /
+                % docker --version //docker version inside minikube
+                % docker ps //containers inside minikube
+               
+   **Starting and Stopping Cluster
+                
+                % minikube status
+                % minikube stop
+                % minikube status
+                % minikube start
+                % minikube status
+                % minikube delete //to delete entire cluster
+                
+   **CLuster with 2 nodes
+            
+                % minikube start --help
+                % minikube start --nodes=2
+                % minikube status
+                % kubectl get nodes
+                % minikube ip
+                % minikube ip --node minikube
+                % minikube ip --node minikube-m02
+                
+                
+                
+
+                
+                
+                
+                
+                
             
     
