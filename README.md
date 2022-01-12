@@ -116,6 +116,48 @@
             % minikube start //to start a cluster
             % minikube status
             % docker ps //should list minikube container running on docker engine
-            
+            % minikube ip //ip address of master node
+    
+    #KUBECTL
+            - Kubernetes command line tool
+            - runs commands against our cluster
+               -deploy
+               -inspect
+               -edit resources
+               -debug
+               -view logs
+               -etc
+               
+    #INSTALLING KUBECTL
+                - https://kubernetes.io/docs/tasks/tools/#kubectl
+                - https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/
+                %    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/darwin/amd64/kubectl"
+                % chmod +x ./kubectl //make kubectl binary executable
+                % sudo mv ./kubectl /usr/local/bin/kubectl  //move to a file location
+                % sudo chown root: /usr/local/bin/kubectl //to make it root
+                % kubectl version --client //for testing
+    
+    #KUBECTL- Creating POD 
+                %  docker run --rm -p 80:80 <kubernetes image>
+                - http://localhost
+                % CTRL+C
+                % kubectl run <kubernetes image name> --image =<kubernetes image> --port=80 
+                -//example 
+                    - kubectl run hello-world --image=abhilashgd/kubernetes:hello-world --port=80
+                % kubectl get pods // to list pods
+                % kubectl port-forward pod/hello-world 8080:80
+                % kubectl delete pod hello-world //to delete pod
+                % kubectl get pods
+    
+    #Exploring cluster
+               
+                % minikube status
+                % kubectl get nodes
+                % kubectl get pods
+                % kubectl get pods -A
+                %  - kubectl run hello-world --image=abhilashgd/kubernetes:hello-world --port=80
+                % kubectl get pods
+                
+    
             
     
