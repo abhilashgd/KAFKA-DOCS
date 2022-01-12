@@ -177,7 +177,7 @@
                 % docker --version //docker version inside minikube
                 % docker ps //containers inside minikube
                
-   **Starting and Stopping Cluster
+   **Starting and Stopping Cluster**
                 
                 % minikube status
                 % minikube stop
@@ -186,7 +186,7 @@
                 % minikube status
                 % minikube delete //to delete entire cluster
                 
-   **CLuster with 2 nodes
+   **Cluster with 2 nodes**
             
                 % minikube start --help
                 % minikube start --nodes=2
