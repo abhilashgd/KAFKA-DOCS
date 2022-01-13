@@ -346,10 +346,47 @@
                 
 **CREATING DEPLOYMENTS**
 
-                --
+                -- VS Code //deployment.yaml
+                % kubectl delete pod hello-world
+                % kubectl get pods
+                % kubectl apply -f deployment.yaml
+                % kubectl get pods
                 
+**MANAGING DEPLOYMENTS**   
+  
+                % kubectl get deployments
+                % kubectl describe deployment hello-world
+                % kubectl delete deployment hello-world
+                % kubectl get po
+                % kubectl apply -f deployment.yaml
+                % kubectl get po
+                % kubectl delete -f deployment.yaml
+                % kubectl get po
+                % kubectl apply -f deployment.yaml
                 
+ **REPLICASET**
+ 
+                - Ensures desired number of pods always running
+                //CONTROL LOOPS
+                        - replicaset implement a background control loop that checks the desired number of pods are always on the cluster
+                //LISTING REPLICATE SETS
                 
+                % kubectl api-resources 
+                //always use deployments. never create replicate sets on its own
+                % kubectl get replicaset
+                or
+                % kubectl get rs
+                % kubectl describe rs hello-world-65f9744cf8
+                % kubectl get po
+                //never delete replicaset. delete deployment instead which manages replicaset
+                //PORT FORWARD DEPLOYMENTS
+                % kubectl get deployment
+                % kubectl get po
+                % kubectl port-forward deployment/hello-world 8081:80
+                http://localhost:8081/
+                % kubectl scale --replicas=3 -f deployment.yaml //scaling up replicas
+                % kubectl get po
+                % kubectl apply -f deployment.yaml
                 
                 
                 
