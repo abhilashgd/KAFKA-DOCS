@@ -218,7 +218,7 @@
                 % kubectl run hello-world --image=abhilashgd/kubernetes:hello-world --port=80
                 -->//Declarative command -- for environments -reproducible
                 //using a configuration file
-                v1@pod.json
+                pod.yml
                 
                 //Command
                 % kubectl get pods
@@ -226,4 +226,7 @@
                 % kubectl get pods
                 % kubectl port-forward pod/hello-world 8080:80 //port forwarding only for testing purpose
                 //iterm shortcut - ctrl+r for searching previous commands
+                
+                //Creating pod usig configuration
+                pod.yml
                 
