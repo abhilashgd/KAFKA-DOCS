@@ -414,6 +414,37 @@
                 % kubectl get pods -w
                 % kubectl logs order-7d87cb7758-4mpht
                 
+ **Microservice Communication using POD IP address**
+ 
+                //WRONG WAY
+                put value for ORDER_SERVICE in customer-deployment.yaml as ip address
+                fetched from 
+                % kubectl describe pod order-7d87cb7758-z4z9c
+                % kubectl apply -f customer-deployment.yaml
+                % kubectl get pods
+                % kubectl port-forward deployment/customer 8080:8080
+                
+                //RIGHT WAY
+                Service -
+                
+                order-deployment.yaml
+                //added service
+                % kubectl apply -f order-deployment.yaml
+                % kubectl get service
+                % kubectl describe service order
+                //end points are the list of healthy pods 
+                % kubectl get pods
+                % kubectl describe pod order-7d87cb7758-z4z9c
+                % kubectl get endpoints
+                //put service IP address in customer-deployment.yaml ORDER_SERVICE value
+                % kubectl apply -f order-deployment.yaml
+                % kubectl apply -f customer-deployment.yaml
+                % kubectl get deploy
+                % kubectl port-forward deployment/customer 8080:8080
+                http://localhost:8080/api/v1/customer/2/orders
+                http://localhost:8080/api/v1/customer/1/orders
+                http://localhost:8080/api/v1/customer/3/orders
+                % kubectl get service
                 
                 
                 
