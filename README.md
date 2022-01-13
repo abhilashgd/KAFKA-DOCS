@@ -387,6 +387,33 @@
                 % kubectl scale --replicas=3 -f deployment.yaml //scaling up replicas
                 % kubectl get po
                 % kubectl apply -f deployment.yaml
+                % kubectl get deployment
+                % kubectl describe rs hello-world
+                
+**Kubernetes Services**
+
+                - service will have stable IP address, stable DNS Name, stable Port
+                //Types
+                - ClusterIP (Default)
+                - NodePort
+                - ExternalName
+                - LoadBalancer
+              
+**customer Microservice Deployment**
+
+                //customer-deployment.yaml
+                % kubectl apply -f customer-deployment.yaml
+                % kubectl apply -f deployment.yaml //changed scale to 2
+                % kubectl get pods
+                % kubectl logs customer-7758669b95-5vfzn
+                % kubectl get all
+                % kubectl get deploy
+                % kubectl port-forward deployment/customer 8080:8080 //for debugging purposes
+                //order.yaml
+                % kubectl apply -f order-deployment.yaml
+                % kubectl get pods -w
+                % kubectl logs order-7d87cb7758-4mpht
+                
                 
                 
                 
