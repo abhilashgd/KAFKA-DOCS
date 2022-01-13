@@ -325,7 +325,7 @@
                 % kubectl get po
                 % kubectl get no
                 
-** KUBECTL cheat sheet**
+**KUBECTL cheat sheet**
 
                 % kubectl --help
                 % kubectl get --help
@@ -343,6 +343,10 @@
                 -- manages release of new application
                 -- zero downtime deployments
                 -- creates replicateSet //ensures desired number of pods running
+                
+**CREATING DEPLOYMENTS**
+
+                --
                 
                 
                 
