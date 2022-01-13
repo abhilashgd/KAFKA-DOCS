@@ -8,6 +8,8 @@
        > https://minikube.sigs.k8s.io/docs/start/
        > https://minikube.sigs.k8s.io/docs/handbook/
        > https://containerd.io/
+       > https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+       
 
 
     Application Orchestrator
@@ -299,8 +301,48 @@
                 % kubectl apply -f pod.yml
                 % kubectl logs hello-world -c hello-world
                 
-                
+**Shell Access to a Running pod**                
 
+                % kubectl exec -it hello-world -c hello-world  -- bash
+                or 
+                % kubectl exec -it hello-world -c hello-world  -- /bin/bash
+                % kubectl exec -it hello-world -c hello-world  -- sh
+                or
+                % kubectl exec -it hello-world -c hello-world -- /bin/sh
+                //to execute just one command
+                % kubectl exec hello-world -- ls /
+                % kubectl exec hello-world -- ps aux 
+                
+                //accessing via port forward
+                % kubectl port-forward pod/hello-world 8080:80
+                % kubectl describe pod hello-world
+                % kubectl port-forward pod/hello-world 8081:80
+                
+                //to list all type of resources
+                % kubectl api-resources
+                          //above command lists aa resources including
+                           - secrets, pods, nodes,sservices, deployments, deamonsets
+                % kubectl get po
+                % kubectl get no
+                
+** KUBECTL cheat sheet**
+
+                % kubectl --help
+                % kubectl get --help
+                // logs, exec, get, port-forward, delete, run, 
+                https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+                
+                
+                --> never diploy using kind:pod
+                --> they are ephemeral
+                --> pods dont self heal //once we delete, pod wont come up by itself
+                
+**DEPLOYMENTS**
+
+                -- manage pods through deployments
+                -- manages release of new application
+                -- zero downtime deployments
+                -- creates replicateSet //ensures desired number of pods running
                 
                 
                 
