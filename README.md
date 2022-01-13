@@ -228,5 +228,26 @@
                 //iterm shortcut - ctrl+r for searching previous commands
                 
                 //Creating pod usig configuration
-                pod.yml
+                pod.yml //under code
+                % kubectl get pods
+                % kubectl delete pod hello-world
+                % kubectl get pods
+                % cat pod.yml
+                % kubectl apply -f pod.yml
+                % kubectl get pods
+                % kubectl port-forward pod/hello-world 8080:80 //for testing
+                
+ **VS CODE Extensions**
+ 
+                - Kubernetes
+                - indent-rainbow
+                - code formatter - prettier
+                - docker
+                - bridge to kubernetes
+                - vim
+                - YAML
+                - indent-rainbow
+                
+                
+                
                 
