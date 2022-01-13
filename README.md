@@ -1,4 +1,14 @@
 # KUBERNETES-DOCS
+        
+        References: 
+       > https://kubernetes.io/docs/home/
+       > https://kubernetes.io/docs/concepts/overview/components/
+       > https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/
+       > https://kubernetes.io/docs/concepts/workloads/pods/
+       > https://minikube.sigs.k8s.io/docs/start/
+       > https://minikube.sigs.k8s.io/docs/handbook/
+       > https://containerd.io/
+
 
     Application Orchestrator
        - scales up according to demand
