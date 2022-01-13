@@ -246,8 +246,58 @@
                 - bridge to kubernetes
                 - vim
                 - YAML
-                - indent-rainbow
                 
+**CREATE, LIST, DESCRIBE and DELETE Resources**
+
+                % kubectl get pods
+                % kubectl apply -f pod.yml //create best practice
+                or
+                % cat pod.yml | kubectl apply -f - 
+                % kubectl get pods
+                % kubectl delete pod hello-world
+                % kubectl apply -f .
+                % kubectl get pods 
+                % kubectl delete -f pod.yml //Delete best practice
+                % kubectl get pods -w
+                % kubectl get pods 
+                
+                //List Resources
+                % kubectl get pods -A
+                % kubectl get all
+                % kubectl get all -A
+                % kubectl get pod -n kube-system
+                % kubectl get all -n kube-system
+                % kubectl get namespaces
+                 or
+                % kubectl get ns
+                
+                //Kubectl Describe
+                % kubectl describe pod hello-world
+                % kubectl get pod hello-world --output wide
+                % kubectl get pod hello-world -o yaml
+                % kubectl get pod hello-world -o json
+  
+ **Debugging with KUBECTL -Logs**
+                
+                % kubectl get pods
+                % kubectl logs hello-world
+                % kubectl logs hello-world -f //tailing logs
+                % kubectl describe pod hello-world  
+                % kubectl logs hello-world -c hello-world
+                % code pod.yml //opens VSCode
+                % kubectl delete pod -f pod.yml
+                % kubectl apply -f pod.yml
+                % kubectl logs hello-world -c hello-world
+                
+                
+
+                
+                
+                
+                
+                
+                
+
                 
                 
                 
