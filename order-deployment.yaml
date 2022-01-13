@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-world
+  name: order
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: hello-world
+      app: order
   template:
     metadata:
       labels:
-        app: hello-world
+        app: order
     spec:
       containers:
-      - name: hello-world
-        image: abhilashgd/kubernetes:hello-world
+      - name: order
+        image: "abhilashgd/kubernetes:order-v1"
         resources:
           limits:
             memory: "128Mi"
             cpu: "500m"
         ports:
-        - containerPort: 80
+        - containerPort: 8081
