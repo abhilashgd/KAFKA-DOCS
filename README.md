@@ -158,7 +158,7 @@
                 % kubectl get nodes
                 % kubectl get pods
                 % kubectl get pods -A
-                %  - kubectl run hello-world --image=abhilashgd/kubernetes:hello-world --port=80
+                % kubectl run hello-world --image=abhilashgd/kubernetes:hello-world --port=80
                 % kubectl get pods
                 % kubectl get pods -A
                 
@@ -195,14 +195,35 @@
                 % minikube ip
                 % minikube ip --node minikube
                 % minikube ip --node minikube-m02
+   
+   **MINIKUBE LOGS**  
+              
+                % minikube logs 
+                % minikube logs -f
+                % kubectl get nodes
+                % minikube logs --help
+                % minikube logs --node=minikube-m02 -f
                 
-                
-                
-
-                
-                
-                
-                
-                
-            
+   **PODS**
     
+                --> Group of 1 or more container
+                --> Represents a running process
+                --> Share network and volumes
+                --> Never create pods on its own. Use Controllers instead
+                --> Ephemeral and disposable
+                --> smallest deployable unit 
+                
+                //Creating pods
+                --> //Imperative command --for troubleshooting, experimenting
+                % kubectl run hello-world --image=abhilashgd/kubernetes:hello-world --port=80
+                -->//Declarative command -- for environments -reproducible
+                //using a configuration file
+                v1@pod.json
+                
+                //Command
+                % kubectl get pods
+                % kubectl run hello-world --image=abhilashgd/kubernetes:hello-world --port=80
+                % kubectl get pods
+                % kubectl port-forward pod/hello-world 8080:80 //port forwarding only for testing purpose
+                //iterm shortcut - ctrl+r for searching previous commands
+                
