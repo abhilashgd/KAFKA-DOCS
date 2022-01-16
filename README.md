@@ -446,6 +446,101 @@
                 http://localhost:8080/api/v1/customer/3/orders
                 % kubectl get service
                 
+#Node Port Service Type
+
+                - allows you open a port on all nodes
+                - Port range 30000-32767
+                - client sends request directly to node IP address:port
+                                example: 192.168.49.2:30001
+                % kubectl apply -f customer-deployment.yaml
+                % kubectl get pods
+                % kubectl get service OR kubectl get svc
+                % kubectl describe svc customer-node
+                
+#Accessing API with NodePort Service
+
+                % docker ps
+                % kubectl get nodes
+                % minikube ip
+                % minikube ip -n minikube-m02
+                % minikube ssh
+                $ curl localhost:30000/api/v1/customer
+                $ curl 192.168.49.3:30000/api/v1/customer //192.168.49.3 is minikube-02 ip
+                $ exit
+                
+                //in another terminal
+                % minikube ssh -n minikube-m02
+                $ curl localhost:30000/api/v1/customer
+                $  curl 192.168.49.2:30000/api/v1/customer //192.168.49.3 is minikube node1 IP
+                $ exit
+                % kubectl get svc
+                % minikube service customer-node --url
+                🏃  Starting tunnel for service customer-node.
+                |-----------|---------------|-------------|------------------------|
+                | NAMESPACE |     NAME      | TARGET PORT |          URL           |
+                |-----------|---------------|-------------|------------------------|
+                | default   | customer-node |             | http://127.0.0.1:55833 |
+                |-----------|---------------|-------------|------------------------|
+                http://127.0.0.1:55833
+                
+                BROWSER: http://127.0.0.1:55833/api/v1/customer  //accessing service direclty
+                BROWSER: http://127.0.0.1:55833/api/v1/customer/1/orders
+                
+#NODE PORT with RANDOM PORT
+                
+                //if we do not mention nodePort in service under customer-deployment.yaml, it allocates random port
+                //delete nodePort in customer-deployment.yaml
+                % kubectl apply -f customer-deployment.yaml
+                % kubectl get svc
+                % minikube ip -n minikube-m02
+                % minikube ssh 
+                % exit
+                % kubectl get nodes
+                % minikube ssh
+                $ curl localhost:30675/api/v1/customer //30675 randomly generated port
+                $ curl 192.168.49.3:300675/api/v1/customer //accessing 2nd node
+                $ exit
+                % kubectl get svc
+                % minikube service customer-node
+                BROWSER: http://127.0.0.1:51345/api/v1/customer 
+                BROWSER: http://127.0.0.1:51345/api/v1/customer/1/orders
+                
+                % kubectl delete svc customer-node
+                % kubectl apply -f customer-deployment.yaml //changed customer-node to customer in service
+                % kubectl get svc
+                
+#Accessing NodePort Service Using Cluster IP Address
+        
+                % kubectl get svc
+                % kubectl get pods
+                % kubectl exec -it order-7d87cb7758-5p9ts -- sh
+                # apk add curl
+                # curl
+                # curl 10.106.250.236/api/v1/customer
+                # curl customer/api/v1/customer
+                # exit
+                % kubectl get svc
+                % kubectl delete svc customer
+                % kubectl apply -f customer-deployment.yaml //changed back customer to customer-node in service
+                % kubectl get svc
+                
+#LOAD BALANCER SERVICE
+        
+                - standard way of exposing applications to the internet
+                - creates a load balancer per service
+                -AWS and GCP - Network Load Balancer NLB
+                - MINIKUBE - minikube tunnel
+               
+                //GOOGLE CLOUD CONSOLE -               https://console.cloud.google.com/marketplace/product/google/compute.googleapis.com?returnUrl=%2Fnet-services%2Floadbalancing%2Flist%2FloadBalancers%3F_ga%3D2.66755886.1291078104.1642311903-1084078483.1642311903%26_gac%3D1.48331476.1642311903.CjwKCAiA_omPBhBBEiwAcg7smZkKOtxPESBumDCMgN1MXeQh5DQOszy4g-Ygy_xSYRes0sxJ2KjTyhoCjJcQAvD_BwE%26pli%3D1%26project%3Demerald-result-174814&project=emerald-result-174814
+                
+                https://cloud.google.com/load-balancing/?utm_source=google&utm_medium=cpc&utm_campaign=japac-IN-all-en-dr-bkws-all-pkws-trial-b-dr-1009882&utm_content=text-ad-none-none-DEV_c-CRE_468709820526-ADGP_Hybrid%20%7C%20BKWS%20-%20PHR%20%7C%20Txt%20~%20Networking%20~%20Cloud%20Load%20Balancing_cloud%20load%20balancing-general%20-%20Products-KWID_43700065772992381-kwd-351186651341&userloc_9062011-network_g&utm_term=KW_google%20cloud%20load%20balancing&gclid=CjwKCAiA_omPBhBBEiwAcg7smZkKOtxPESBumDCMgN1MXeQh5DQOszy4g-Ygy_xSYRes0sxJ2KjTyhoCjJcQAvD_BwE&gclsrc=aw.ds
+                
+                
+ #CLOUD CONTROLLER MANAGER
+ 
+                - AWS
+                - Azure
+                - Google cloud
                 
                 
 
