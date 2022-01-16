@@ -23,7 +23,7 @@
       -MASTER NODE - all decisions are made
       -worker node - running applications etc. (Example- 1Master node - 3-Worker node)
     
-   **MasterNode** 
+ # MasterNode 
    
       - Scheduler
             - watches for new workloads/pods and assigns them to a node based on several scheduling factors
@@ -57,7 +57,7 @@
         gives load balancer.
         creates load balancer based on underlying cloud controller provider (aws or azure or google cloud)
         
-   **WORKER NODE**
+ # WORKER NODE
    
           - provides running environment for our applications
           -3 Main components (kublet, container runtime and kube proxy)
@@ -79,7 +79,7 @@
                   -each node gets own unique IP address
                   -routing network traffic to load balanced services
  
- **RUNNING KUBERNETES**
+# RUNNING KUBERNETES
            
            Managed Kubernetes (Master node fully managed by below services)
            - EKS - Elastic Kubernetes Service (from AWS)
@@ -93,7 +93,7 @@
               - EC2 (for long run applictions)
           -Amazon EKS dashboard in the AWS console
   
-  **RUNNING KUBERNETES LOCALLY**
+# RUNNING KUBERNETES LOCALLY
   
      local cluster can be created using 
         - minikube
@@ -101,7 +101,7 @@
         - docker
         Note: do not use it in any environment including production. used only for local development or CI
         
-   **MINIKUBE**
+ # MINIKUBE
    
       - Docker + Minikube
       - minikube quickly sets up a local kubernetes cluster on macOS
@@ -117,7 +117,7 @@
            % docker ps -a
            % docker rm -f <container id>
       
-   **INSTALLING MINIKUBE AND MINIKUBE COMMANDS**
+ # INSTALLING MINIKUBE AND MINIKUBE COMMANDS
    
             - https://minikube.sigs.k8s.io/docs/start/
             % brew install minikube
@@ -130,7 +130,7 @@
             % docker ps //should list minikube container running on docker engine
             % minikube ip //ip address of master node
     
-   **KUBECTL**
+# KUBECTL
     
             - Kubernetes command line tool
             - runs commands against our cluster
@@ -141,7 +141,7 @@
                -view logs
                -etc
                
-   **INSTALLING KUBECTL**
+ # INSTALLING KUBECTL
    
                 - https://kubernetes.io/docs/tasks/tools/#kubectl
                 - https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/
@@ -151,7 +151,7 @@
                 % sudo chown root: /usr/local/bin/kubectl //to make it root
                 % kubectl version --client //for testing
     
-   **KUBECTL- Creating POD** 
+# KUBECTL- Creating POD
     
                 %  docker run --rm -p 80:80 <kubernetes image>
                 - http://localhost
@@ -208,7 +208,7 @@
                 % minikube ip --node minikube
                 % minikube ip --node minikube-m02
    
-   **MINIKUBE LOGS**  
+ # MINIKUBE LOGS  
               
                 % minikube logs 
                 % minikube logs -f
@@ -259,7 +259,7 @@
                 - vim
                 - YAML
                 
-**CREATE, LIST, DESCRIBE and DELETE Resources**
+# CREATE, LIST, DESCRIBE and DELETE Resources
 
                 % kubectl get pods
                 % kubectl apply -f pod.yml //create best practice
@@ -289,7 +289,7 @@
                 % kubectl get pod hello-world -o yaml
                 % kubectl get pod hello-world -o json
   
- **Debugging with KUBECTL -Logs**
+# Debugging with KUBECTL -Logs
                 
                 % kubectl get pods
                 % kubectl logs hello-world
@@ -301,7 +301,7 @@
                 % kubectl apply -f pod.yml
                 % kubectl logs hello-world -c hello-world
                 
-**Shell Access to a Running pod**                
+# Shell Access to a Running pod         
 
                 % kubectl exec -it hello-world -c hello-world  -- bash
                 or 
@@ -325,7 +325,7 @@
                 % kubectl get po
                 % kubectl get no
                 
-**KUBECTL cheat sheet**
+# KUBECTL cheat sheet
 
                 % kubectl --help
                 % kubectl get --help
@@ -337,14 +337,14 @@
                 --> they are ephemeral
                 --> pods dont self heal //once we delete, pod wont come up by itself
                 
-**DEPLOYMENTS**
+# DEPLOYMENTS
 
                 -- manage pods through deployments
                 -- manages release of new application
                 -- zero downtime deployments
                 -- creates replicateSet //ensures desired number of pods running
                 
-**CREATING DEPLOYMENTS**
+# CREATING DEPLOYMENTS
 
                 -- VS Code //deployment.yaml
                 % kubectl delete pod hello-world
@@ -364,7 +364,7 @@
                 % kubectl get po
                 % kubectl apply -f deployment.yaml
                 
- **REPLICASET**
+# REPLICASET
  
                 - Ensures desired number of pods always running
                 //CONTROL LOOPS
@@ -390,7 +390,7 @@
                 % kubectl get deployment
                 % kubectl describe rs hello-world
                 
-**Kubernetes Services**
+# Kubernetes Services
 
                 - service will have stable IP address, stable DNS Name, stable Port
                 //Types
@@ -399,7 +399,7 @@
                 - ExternalName
                 - LoadBalancer
               
-**customer Microservice Deployment**
+# customer Microservice Deployment
 
                 //customer-deployment.yaml
                 % kubectl apply -f customer-deployment.yaml
@@ -414,7 +414,7 @@
                 % kubectl get pods -w
                 % kubectl logs order-7d87cb7758-4mpht
                 
- **Microservice Communication using POD IP address**
+# Microservice Communication using POD IP address
  
                 //WRONG WAY
                 put value for ORDER_SERVICE in customer-deployment.yaml as ip address
