@@ -541,9 +541,27 @@
                 - AWS
                 - Azure
                 - Google cloud
-                
-                
 
+#FULL STACK APP EXPOSED WITH LOAD BALANCER SERVICE
+
+                % kubectl get pods
+                % kubectl apply -f customer-deployment.yaml
+                % kubectl get svc
+                % kubectl apply -f frontend.yaml
+                % kubectl get po
+                % kubectl get svc
+                % kubectl get svc -w
+                // in another terminal
+                % minikube tunnel
+                BROWSER: http://127.0.0.1/
                 
+# KUBERNETES DEFAULT SERVICE
+
+                % kubectl get svc
+                % kubectl get ep //to get end points
+                % kubectl get pod -A
+                % kubectl describe pod kube-apiserver-minikube
+-n kube-system
+                % kubectl get svc
                 
                 
